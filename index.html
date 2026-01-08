@@ -66,7 +66,7 @@
             background-color: var(--gold);
         }
 
-        /* Обложка (HERO) - ПЕРЕРАБОТАНА */
+        /* Обложка (HERO) - ПУТИ ИСПРАВЛЕНЫ */
         .hero {
             background-color: var(--white);
             padding: 120px 10% 80px;
@@ -77,13 +77,13 @@
             min-height: auto;
         }
         .hero-photo-container {
-            flex: 0 0 350px; /* Фиксированная ширина для десктопа */
+            flex: 0 0 350px;
             border-radius: 8px;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            align-self: flex-start; /* Выравнивание по верху */
+            align-self: flex-start;
         }
         .hero-photo-img {
             width: 100%;
@@ -320,7 +320,7 @@
             align-items: center;
             gap: 0.8rem;
         }
-        /* ИКОНКИ ДЛЯ КЕЙСОВ - ПУТИ ИСПРАВЛЕНЫ */
+        /* ИКОНКИ ДЛЯ КЕЙСОВ - ПУТИ ИСПРАВЛЕНЫ (без слеша) */
         .case-section.task h4::before {
             content: '';
             display: inline-block;
@@ -535,7 +535,6 @@
         }
 
         @media (max-width: 992px) {
-            /* Для планшетов: уменьшаем фиксированную ширину фото */
             .hero-photo-container {
                 flex: 0 0 300px;
             }
@@ -552,18 +551,18 @@
                 flex: 0 0 100%;
                 max-width: 350px;
                 width: 100%;
-                order: -1; /* Фото будет первым на мобильных */
+                order: -1;
                 margin-bottom: 1rem;
             }
             .hero-photo-img {
-                object-fit: contain; /* На мобильных показываем полностью */
-                max-height: 500px; /* Ограничиваем высоту на мобильных */
+                object-fit: contain;
+                max-height: 500px;
             }
             .hero-name {
                 font-size: 2.5rem;
             }
             .skills-grid, .achievements-grid {
-                grid-template-columns: 1fr; /* 1 колонка на мобильных */
+                grid-template-columns: 1fr;
             }
             .education-columns {
                 flex-direction: column;
@@ -620,7 +619,6 @@
             }
         }
 
-        /* Для очень высоких экранов (десктоп) */
         @media (min-width: 1400px) {
             .hero-photo-container {
                 flex: 0 0 400px;
@@ -641,13 +639,12 @@
         </div>
     </nav>
 
-    <!-- Обложка (HERO) - УПРОЩЕННАЯ ВЕРСИЯ -->
+    <!-- Обложка (HERO) - ПУТИ ИСПРАВЛЕНЫ -->
     <section id="about" class="hero">
         <div class="hero-photo-container">
             <picture>
-                <!-- Сначала пробуем загрузить webp -->
+                <!-- ПУТИ БЕЗ СЛЕША -->
                 <source srcset="assets/images/photo-hero.webp" type="image/webp">
-                <!-- Фолбэк на jpg -->
                 <img src="assets/images/photo-hero.jpg" 
                      alt="Ольга Якобчук - финансовый аналитик" 
                      loading="eager" 
@@ -729,22 +726,22 @@
             <div class="salary">Ожидания по зарплате 120 000 – 150 000 рублей (net)</div>
             <div class="conditions-grid">
                 <div class="condition-card">
-                    <!-- ИКОНКА УДАЛЁННОЙ РАБОТЫ - ПУТЬ ИСПРАВЛЕН -->
+                    <!-- ИКОНКА УДАЛЁННОЙ РАБОТЫ - ПУТЬ ИСПРАВЛЕН (без слеша) -->
                     <div class="condition-icon" style="background-image: url('assets/icons/monitor.svg')"></div>
                     <p>Удалённо</p>
                 </div>
                 <div class="condition-card">
-                    <!-- ИКОНКА ДОКУМЕНТА - ПУТЬ ИСПРАВЛЕН -->
+                    <!-- ИКОНКА ДОКУМЕНТА - ПУТЬ ИСПРАВЛЕН (без слеша) -->
                     <div class="condition-icon" style="background-image: url('assets/icons/document.svg')"></div>
                     <p>Трудовой договор, полная занятость</p>
                 </div>
                 <div class="condition-card">
-                    <!-- ИКОНКА ЧАСОВ - ПУТЬ ИСПРАВЛЕН -->
+                    <!-- ИКОНКА ЧАСОВ - ПУТЬ ИСПРАВЛЕН (без слеша) -->
                     <div class="condition-icon" style="background-image: url('assets/icons/clock.svg')"></div>
                     <p>MSK (Московское)</p>
                 </div>
                 <div class="condition-card">
-                    <!-- ИКОНКА ЛОКАЦИИ - ПУТЬ ИСПРАВЛЕН -->
+                    <!-- ИКОНКА ЛОКАЦИИ - ПУТЬ ИСПРАВЛЕН (без слеша) -->
                     <div class="condition-icon" style="background-image: url('assets/icons/location.svg')"></div>
                     <p>Краснодарский край</p>
                 </div>
@@ -854,6 +851,44 @@
                         link.classList.add('active');
                     }
                 });
+            });
+            
+            // ==================== 5. ДИАГНОСТИКА ЗАГРУЗКИ ИЗОБРАЖЕНИЙ ====================
+            console.log('Диагностика загрузки изображений:');
+            
+            // Проверка главного фото
+            const mainImage = document.querySelector('.hero-photo-img');
+            if (mainImage) {
+                const imgTest = new Image();
+                imgTest.onload = function() {
+                    console.log('✅ Главное фото загружено:', mainImage.src);
+                };
+                imgTest.onerror = function() {
+                    console.error('❌ Ошибка загрузки главного фото:', mainImage.src);
+                    console.log('Проверьте, что файл существует по пути:', window.location.origin + '/' + mainImage.src);
+                };
+                imgTest.src = mainImage.src;
+            }
+            
+            // Проверка иконок
+            const iconPaths = [
+                'assets/icons/task.svg',
+                'assets/icons/result.svg',
+                'assets/icons/monitor.svg',
+                'assets/icons/document.svg',
+                'assets/icons/clock.svg',
+                'assets/icons/location.svg'
+            ];
+            
+            iconPaths.forEach(path => {
+                const iconTest = new Image();
+                iconTest.onload = function() {
+                    console.log('✅ Иконка загружена:', path);
+                };
+                iconTest.onerror = function() {
+                    console.error('❌ Ошибка загрузки иконки:', path);
+                };
+                iconTest.src = path;
             });
         });
     </script>
