@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ольга Якобчук - Финансовый аналитик</title>
+    <title>Якобчук Ольга - Финансист</title>
+    <!-- Иконка сайта - теперь в папке assets/icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -23,53 +25,17 @@
             line-height: 1.6;
             background-color: var(--white);
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         h1, h2, h3, h4 {
             font-family: 'Inter', sans-serif;
             font-weight: 700;
         }
 
-        /* Навигация */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: var(--white);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        .nav-link {
-            text-decoration: none;
-            color: var(--brown);
-            font-weight: 500;
-            position: relative;
-            transition: color 0.3s;
-            white-space: nowrap;
-        }
-        .nav-link:hover {
-            color: var(--gold);
-        }
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--gold);
-        }
-
-        /* Обложка (HERO) - ПУТИ ИСПРАВЛЕНЫ */
+        /* Обложка (HERO) */
         .hero {
             background-color: var(--white);
-            padding: 120px 10% 80px;
+            padding: 80px 10% 60px;
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
@@ -127,24 +93,24 @@
 
         /* Компетенции */
         .skills {
-            padding: 80px 10%;
+            padding: 60px 10%;
             background-color: var(--beige);
         }
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             color: var(--brown);
             font-weight: 700;
         }
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .skill-card {
             background-color: var(--white);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
@@ -163,7 +129,7 @@
             box-shadow: 0 8px 25px rgba(198, 167, 105, 0.2);
         }
         .skill-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--brown);
             font-weight: 600;
@@ -188,17 +154,17 @@
 
         /* Достижения */
         .achievements {
-            padding: 80px 10%;
+            padding: 60px 10%;
             background-color: var(--white);
         }
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
         }
         .achievement-card {
             background-color: var(--white);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -210,18 +176,18 @@
         .number {
             font-family: 'Playfair Display', serif;
             color: var(--gold);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-weight: 700;
             display: flex;
             align-items: baseline;
             justify-content: center;
         }
         .num {
-            font-size: 5rem;
+            font-size: 4rem;
             line-height: 1;
         }
         .symbol {
-            font-size: 2.5rem;
+            font-size: 2rem;
             line-height: 1;
             margin-left: 0.3rem;
         }
@@ -229,17 +195,17 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--brown);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         .achievement-desc {
             color: var(--gold);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 300;
         }
 
         /* Кейсы */
         .cases {
-            padding: 80px 10%;
+            padding: 60px 10%;
             background-color: var(--white);
         }
         .cases-accordion {
@@ -247,14 +213,14 @@
             margin: 0 auto;
         }
         .case-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             cursor: pointer;
         }
         .case-header {
-            padding: 1.5rem;
+            padding: 1.2rem;
             background-color: var(--white);
             display: flex;
             align-items: center;
@@ -264,7 +230,7 @@
         .case-number {
             font-family: 'Playfair Display', serif;
             color: var(--gold);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-right: 1rem;
             min-width: 30px;
@@ -274,39 +240,39 @@
             flex: 1;
         }
         .case-header h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
             color: var(--brown);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         .case-period {
             color: var(--gold);
             font-weight: 300;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         .case-toggle {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--gold);
             margin-left: 1rem;
             transition: transform 0.3s;
         }
         .case-content {
-            padding: 0 1.5rem;
+            padding: 0 1.2rem;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
             background-color: var(--white);
         }
         .case-content.open {
-            padding: 1.5rem;
+            padding: 1.2rem;
             max-height: 1000px;
         }
         .case-section {
-            margin-bottom: 2.5rem;
-            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            padding-left: 1.2rem;
             position: relative;
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
         }
         .case-section:last-child {
             margin-bottom: 0;
@@ -315,17 +281,17 @@
             font-family: 'Inter', sans-serif;
             font-weight: 500;
             color: var(--gold);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.8rem;
         }
-        /* ИКОНКИ ДЛЯ КЕЙСОВ - ПУТИ ИСПРАВЛЕНЫ (без слеша) */
+        /* ИКОНКИ ДЛЯ КЕЙСОВ */
         .case-section.task h4::before {
             content: '';
             display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background-image: url('assets/icons/task.svg');
             background-size: contain;
             background-repeat: no-repeat;
@@ -333,8 +299,8 @@
         .case-section.result h4::before {
             content: '';
             display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background-image: url('assets/icons/result.svg');
             background-size: contain;
             background-repeat: no-repeat;
@@ -347,13 +313,13 @@
         }
         .case-section.result ul {
             background-color: var(--beige);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 8px;
-            margin-top: 1rem;
+            margin-top: 0.8rem;
         }
         .case-section ul {
             list-style: none;
-            padding-left: 1.5rem;
+            padding-left: 1.2rem;
         }
         .case-section li {
             position: relative;
@@ -363,18 +329,18 @@
             content: '•';
             color: var(--gold);
             position: absolute;
-            left: -1.2rem;
+            left: -1rem;
             top: 0.3rem;
         }
 
         /* Образование */
         .education {
-            padding: 80px 10%;
+            padding: 60px 10%;
             background-color: var(--beige);
         }
         .education-columns {
             display: flex;
-            gap: 4rem;
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -384,7 +350,7 @@
             flex-direction: column;
         }
         .education-column h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--brown);
             text-align: center;
@@ -392,35 +358,38 @@
         }
         .education-content {
             flex: 1;
-            padding: 2rem;
+            padding: 1.5rem;
             background-color: var(--white);
             border-radius: 8px;
             border: 2px solid var(--gold);
         }
         .education-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
             border-bottom: 1px solid rgba(58, 44, 26, 0.1);
         }
         .education-year {
             color: var(--gold);
             font-weight: 300;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             display: block;
+            font-size: 0.9rem;
         }
         .education-degree {
             font-weight: 500;
             margin-bottom: 0.3rem;
+            font-size: 1rem;
         }
         .education-institution {
             color: var(--brown);
             font-style: italic;
+            font-size: 0.9rem;
         }
         /* ПЛАШКА "АНГЛИЙСКИЙ ЯЗЫК" */
         .language-card {
             background-color: var(--white);
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 1.5rem;
+            margin-top: 2.5rem;
             border-radius: 8px;
             border: 2px solid var(--gold);
             max-width: calc(1200px);
@@ -432,7 +401,7 @@
 
         /* Контакты */
         .contacts {
-            padding: 80px 10%;
+            padding: 60px 10%;
             background-color: var(--white);
         }
         .contacts-container {
@@ -441,9 +410,9 @@
         }
         .salary {
             text-align: center;
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            padding: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            padding: 1.2rem;
             background-color: var(--beige);
             border-radius: 8px;
             font-weight: 500;
@@ -452,12 +421,12 @@
         .conditions-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
         }
         .condition-card {
             background-color: var(--white);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 8px;
             text-align: center;
             border: 1px solid var(--beige);
@@ -466,12 +435,13 @@
             margin-bottom: 0.5rem;
             color: var(--brown);
             font-weight: 600;
+            font-size: 0.9rem;
         }
         .condition-icon {
             filter: opacity(0.7);
             margin: 0 auto 0.5rem;
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -481,7 +451,7 @@
             flex-direction: column;
             gap: 1rem;
             width: 45%;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
         }
         .contact-btn {
             display: flex;
@@ -510,14 +480,79 @@
             padding: 1rem;
             color: var(--gold);
             text-decoration: none;
-            margin-top: 1rem;
+            margin-bottom: 1.5rem;
             transition: all 0.3s;
         }
         .contact-email:hover {
             text-decoration: underline;
         }
+        /* Текст согласия */
+        .consent-text {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--brown);
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+            padding: 0 1rem;
+        }
+        .consent-text a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .consent-text a:hover {
+            text-decoration: underline;
+        }
 
-        /* Адаптив */
+        /* Футер */
+        .footer {
+            background-color: var(--beige);
+            padding: 2.5rem 10%;
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 1px solid var(--gold);
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-copyright {
+            color: var(--brown);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .footer-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: var(--brown);
+            text-decoration: underline;
+        }
+        .footer-disclaimer {
+            color: var(--brown);
+            font-size: 0.8rem;
+            opacity: 0.7;
+            line-height: 1.4;
+        }
+
+        /* Адаптив - Десктопные улучшения */
+        @media (min-width: 1400px) {
+            .hero-photo-container {
+                flex: 0 0 400px;
+            }
+        }
+
         @media (max-width: 1200px) {
            .skills-grid, .achievements-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -538,115 +573,187 @@
             .hero-photo-container {
                 flex: 0 0 300px;
             }
+            .hero {
+                gap: 3rem;
+            }
+            .education-columns {
+                gap: 2rem;
+            }
         }
 
+        /* Мобильная версия - ОПТИМИЗИРОВАНА */
         @media (max-width: 768px) {
             .hero {
-                padding: 100px 5% 60px;
+                padding: 60px 5% 40px;
                 flex-direction: column;
                 gap: 2rem;
                 align-items: center;
             }
             .hero-photo-container {
                 flex: 0 0 100%;
-                max-width: 350px;
+                max-width: 280px;
                 width: 100%;
-                order: -1;
-                margin-bottom: 1rem;
+                margin-bottom: 0.5rem;
             }
             .hero-photo-img {
                 object-fit: contain;
-                max-height: 500px;
+                max-height: 380px;
             }
             .hero-name {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
             }
+            .hero-description {
+                padding: 1.5rem;
+            }
+            .hero-description p {
+                font-size: 0.95rem;
+                padding: 0.5rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            
+            .skills, .achievements, .cases, .education, .contacts {
+                padding: 40px 5%;
+            }
+            
             .skills-grid, .achievements-grid {
                 grid-template-columns: 1fr;
+                gap: 1.2rem;
             }
-            .education-columns {
-                flex-direction: column;
-                gap: 2rem;
+            
+            .skill-card {
+                padding: 1.2rem;
             }
-            .conditions-grid {
-                grid-template-columns: 1fr;
+            .skill-card h3 {
+                font-size: 1.2rem;
             }
-            .contact-buttons {
-                width: 100%;
-            }
-            .navbar {
-                padding: 1rem;
-                justify-content: flex-start;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .nav-links {
-                gap: 1.5rem;
-                padding: 0 0.5rem;
-            }
-            .case-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            .case-number {
-                align-self: flex-start;
-            }
-            .case-info {
-                width: 100%;
-            }
+            
             .num {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
             .symbol {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
-            .language-card {
+            .achievement-card {
+                padding: 1.2rem;
+            }
+            .achievement-title {
+                font-size: 0.95rem;
+            }
+            
+            .case-header {
+                padding: 1rem;
+            }
+            .case-header h3 {
+                font-size: 1.1rem;
+            }
+            .case-number {
+                font-size: 1.4rem;
+            }
+            
+            .education-columns {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .education-content {
+                padding: 1.2rem;
+            }
+            
+            .conditions-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .condition-card {
+                padding: 1rem;
+            }
+            .condition-icon {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .contact-buttons {
                 width: 100%;
-                max-width: 100%;
+                gap: 0.8rem;
+            }
+            .contact-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .salary {
+                font-size: 1.1rem;
+                padding: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .footer {
+                padding: 2rem 5%;
+                margin-top: 3rem;
+            }
+            .footer-links {
+                gap: 1.5rem;
+            }
+            .footer-link {
+                font-size: 0.8rem;
+            }
+            .consent-text {
+                font-size: 0.75rem;
+                padding: 0 0.5rem;
             }
         }
 
         @media (max-width: 480px) {
             .hero-photo-container {
-                max-width: 280px;
+                max-width: 240px;
             }
             .hero-photo-img {
-                max-height: 400px;
+                max-height: 320px;
             }
             .hero-name {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .num {
+                font-size: 2.5rem;
+            }
+            .contact-email {
+                font-size: 0.9rem;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
 
-        @media (min-width: 1400px) {
+        /* Очень маленькие экраны */
+        @media (max-width: 360px) {
             .hero-photo-container {
-                flex: 0 0 400px;
+                max-width: 220px;
+            }
+            .hero-photo-img {
+                max-height: 300px;
+            }
+            .hero-name {
+                font-size: 1.6rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Навигация -->
-    <nav class="navbar">
-        <div class="nav-links">
-            <a href="#about" class="nav-link active">Обо мне</a>
-            <a href="#skills" class="nav-link">Компетенции</a>
-            <a href="#achievements" class="nav-link">Достижения</a>
-            <a href="#cases" class="nav-link">Кейсы</a>
-            <a href="#education" class="nav-link">Образование</a>
-            <a href="#contacts" class="nav-link">Контакты</a>
-        </div>
-    </nav>
-
-    <!-- Обложка (HERO) - ПУТИ ИСПРАВЛЕНЫ -->
+    <!-- Обложка (HERO) -->
     <section id="about" class="hero">
         <div class="hero-photo-container">
             <picture>
-                <!-- ПУТИ БЕЗ СЛЕША -->
                 <source srcset="assets/images/photo-hero.webp" type="image/webp">
                 <img src="assets/images/photo-hero.jpg" 
-                     alt="Ольга Якобчук - финансовый аналитик" 
+                     alt="Якобчук Ольга - финансист" 
                      loading="eager" 
                      class="hero-photo-img"
                      width="417"
@@ -726,33 +833,58 @@
             <div class="salary">Ожидания по зарплате 120 000 – 150 000 рублей (net)</div>
             <div class="conditions-grid">
                 <div class="condition-card">
-                    <!-- ИКОНКА УДАЛЁННОЙ РАБОТЫ - ПУТЬ ИСПРАВЛЕН (без слеша) -->
+                    <!-- ИКОНКА УДАЛЁННОЙ РАБОТЫ -->
                     <div class="condition-icon" style="background-image: url('assets/icons/monitor.svg')"></div>
                     <p>Удалённо</p>
                 </div>
                 <div class="condition-card">
-                    <!-- ИКОНКА ДОКУМЕНТА - ПУТЬ ИСПРАВЛЕН (без слеша) -->
+                    <!-- ИКОНКА ДОКУМЕНТА -->
                     <div class="condition-icon" style="background-image: url('assets/icons/document.svg')"></div>
                     <p>Трудовой договор, полная занятость</p>
                 </div>
                 <div class="condition-card">
-                    <!-- ИКОНКА ЧАСОВ - ПУТЬ ИСПРАВЛЕН (без слеша) -->
+                    <!-- ИКОНКА ЧАСОВ -->
                     <div class="condition-icon" style="background-image: url('assets/icons/clock.svg')"></div>
                     <p>MSK (Московское)</p>
                 </div>
                 <div class="condition-card">
-                    <!-- ИКОНКА ЛОКАЦИИ - ПУТЬ ИСПРАВЛЕН (без слеша) -->
+                    <!-- ИКОНКА ЛОКАЦИИ -->
                     <div class="condition-icon" style="background-image: url('assets/icons/location.svg')"></div>
                     <p>Краснодарский край</p>
                 </div>
             </div>
             <div class="contact-buttons">
                 <a href="https://krasnodar.hh.ru/resume/011274acff0fdc185f0039ed1f383678704355" target="_blank" class="contact-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>Полное резюме на HeadHunter</span></a>
-                <a href="https://t.me/sok_ola?start=Здравствуйте!%20Пишу%20с%20вашего%20сайта%20по%20поводу%20вакансии." target="_blank" class="contact-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg><span>Написать в Telegram</span></a>
+                <a href="https://t.me/sok_ola?text=Здравствуйте!%20Пишу%20с%20вашего%20сайта%20по%20поводу%20вакансии." target="_blank" class="contact-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg><span>Написать в Telegram</span></a>
             </div>
             <a href="mailto:olgadata@yandex.ru" class="contact-email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span>olgadata@yandex.ru</span></a>
+            
+            <!-- Текст согласия -->
+            <div class="consent-text">
+                Нажимая на кнопки перехода, вы подтверждаете, что ознакомились с 
+                <a href="agreement.html" target="_blank">Пользовательским соглашением</a> 
+                и даёте согласие на обработку персональных данных в соответствии с 
+                <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.
+            </div>
         </div>
     </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-copyright">
+                © 2026 Ольга Якобчук. Все права защищены.
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html" class="footer-link" target="_blank">Политика конфиденциальности</a>
+                <a href="agreement.html" class="footer-link" target="_blank">Пользовательское соглашение</a>
+                <a href="mailto:olgadata@yandex.ru" class="footer-link">Контактная информация</a>
+            </div>
+            <div class="footer-disclaimer">
+                Сайт создан в профессиональных целях. Информация носит ознакомительный характер.
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -822,39 +954,23 @@
                 });
             });
 
-            // ==================== 4. ПЛАВНАЯ ПРОКРУТКА И АКТИВНЫЙ ПУНКТ МЕНЮ ====================
+            // ==================== 4. ПЛАВНАЯ ПРОКРУТКА ПРИ НАЖАТИИ НА ССЫЛКИ В ФУТЕРЕ ====================
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            window.addEventListener('scroll', () => {
-                const sections = document.querySelectorAll('section');
-                const navLinks = document.querySelectorAll('.nav-link');
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === current) {
-                        link.classList.add('active');
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
             
             // ==================== 5. ДИАГНОСТИКА ЗАГРУЗКИ ИЗОБРАЖЕНИЙ ====================
-            console.log('Диагностика загрузки изображений:');
+            console.log('Проверка загрузки изображений...');
             
             // Проверка главного фото
             const mainImage = document.querySelector('.hero-photo-img');
@@ -865,7 +981,6 @@
                 };
                 imgTest.onerror = function() {
                     console.error('❌ Ошибка загрузки главного фото:', mainImage.src);
-                    console.log('Проверьте, что файл существует по пути:', window.location.origin + '/' + mainImage.src);
                 };
                 imgTest.src = mainImage.src;
             }
@@ -877,7 +992,8 @@
                 'assets/icons/monitor.svg',
                 'assets/icons/document.svg',
                 'assets/icons/clock.svg',
-                'assets/icons/location.svg'
+                'assets/icons/location.svg',
+                'assets/icons/favicon.svg'
             ];
             
             iconPaths.forEach(path => {
@@ -889,6 +1005,24 @@
                     console.error('❌ Ошибка загрузки иконки:', path);
                 };
                 iconTest.src = path;
+            });
+            
+            // ==================== 6. ПЛАВНОЕ ПОЯВЛЕНИЕ СЕКЦИЙ ПРИ СКРОЛЛЕ ====================
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Наблюдаем за всеми секциями
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                sectionObserver.observe(section);
             });
         });
     </script>
