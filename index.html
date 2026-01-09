@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Якобчук Ольга - Финансист</title>
+    <!-- Иконка сайта - теперь в папке assets/icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brown: #0A5F38; /* Изменено с #3A2C1A на #0A5F38 (еловый) */
+            --gold: #C6A769;
+            --beige: #F5F1E8;
+            --white: #FFFFFF;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--brown);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+
+        /* ==================== ГЛАВНЫЙ ЭКРАН - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        .hero {
+            background-color: var(--white);
+            padding: 60px 10% 40px; /* Уменьшили отступы */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end; /* Изменено с flex-start на flex-end */
+            gap: 5rem; /* Увеличили расстояние между фото и контентом */
+            min-height: auto;
+            max-width: 1400px; /* Ограничили максимальную ширину */
+            margin: 0 auto; /* Центрирование */
+        }
+        .hero-photo-container {
+            flex: 0 0 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            align-self: flex-start;
+        }
+        .hero-photo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 700px; /* Ограничили ширину контента */
+        }
+        .hero-name {
+            font-size: 3.5rem;
+            color: var(--brown);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+        .hero-name span:first-child {
+            color: #c3a373; /* Новый более светлый золотой */
+        }
+        .hero-name span:last-child {
+            color: #004524; /* Темно-зеленый */
+        }
+        .hero-description {
+            background-color: transparent; /* Убрали бежевый фон */
+            padding: 1.5rem 2rem; /* Уменьшили вертикальный padding */
+            border-radius: 8px;
+            position: relative;
+            border: 2px solid var(--gold); /* Золотая рамка */
+            box-shadow: 0 4px 15px rgba(198, 167, 105, 0.1); /* Легкая тень */
+            margin-left: 0; /* Выровняли по левому краю */
+            max-width: 600px; /* Сделали уже */
+        }
+        .hero-description p {
+            color: var(--brown); /* Еловый цвет текста */
+            margin-bottom: 1rem;
+            position: relative;
+            padding: 0.75rem 0;
+        }
+        .hero-description p:first-child {
+            padding-top: 0; /* Убрали padding у первого пункта */
+        }
+        .hero-description p:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0; /* Убрали padding у последнего пункта */
+        }
+        .hero-description p:not(:last-child) {
+            border-bottom: 1px solid rgba(198, 167, 105, 0.3); /* Более светлая золотая линия */
+        }
+
+        /* Компетенции */
+        .skills {
+            padding: 60px 10%;
+            background-color: var(--beige);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #004524; /* Изменено с var(--brown) на #004524 */
+            font-weight: 700;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .skill-card {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 8px 25px rgba(198, 167, 105, 0.2);
+        }
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #004524; /* Изменено на темно-зеленый */
+            font-weight: 600;
+        }
+        .skill-card ul {
+            list-style: none;
+        }
+        .skill-card li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .skill-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            width: 6px;
+            height: 6px;
+            background-color: var(--gold);
+        }
+
+        /* ==================== ДОСТИЖЕНИЯ - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        .achievements {
+            padding: 60px 10%;
+            background-color: var(--white);
+        }
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .achievement-card {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid transparent; /* Добавили прозрачную рамку для анимации */
+            transition: all 0.3s ease; /* Добавили плавный переход */
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .achievement-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Эффект при наведении как в "Компетенциях" */
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 8px 25px rgba(198, 167, 105, 0.2);
+        }
+        .number {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+        }
+        /* Анимация появления цифры (из точки) */
+        .num {
+            font-size: 4rem;
+            line-height: 1;
+            opacity: 0;
+            transform: scale(0.2);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); /* Плавная анимация */
+        }
+        .num.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .symbol {
+            font-size: 2rem;
+            line-height: 1;
+            margin-left: 0.3rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s; /* Задержка для символа */
+        }
+        .symbol.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .achievement-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #004524;
+            font-size: 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.6s ease 0.4s; /* Задержка для заголовка */
+        }
+        .achievement-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .achievement-desc {
+            color: var(--gold);
+            font-size: 0.95rem; /* УВЕЛИЧЕНО с 0.85rem */
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.6s ease 0.6s; /* Самая большая задержка для описания */
+        }
+        .achievement-desc.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== КЕЙСЫ - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        .cases {
+            padding: 60px 10%;
+            background-color: var(--white);
+        }
+        .cases-accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .case-item {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .case-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .case-header {
+            padding: 1.5rem;
+            background-color: var(--beige);
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            border-left: 4px solid var(--gold);
+            border-bottom: 1px solid rgba(198, 167, 105, 0.3);
+        }
+        .case-info {
+            flex: 1;
+            width: 100%; /* Чтобы заголовок занимал всю ширину */
+        }
+        .case-header h3 {
+            font-size: 1.3rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #004524;
+            margin-bottom: 0.3rem; /* Уменьшили отступ для лучшего выравнивания */
+        }
+        .case-period {
+            color: var(--gold); /* ВЕРНУЛИ ЗОЛОТОЙ ЦВЕТ */
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        .case-toggle {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-left: 1rem;
+            transition: transform 0.3s ease;
+            font-weight: 700;
+            min-width: 24px;
+            flex-shrink: 0; /* Чтобы стрелка не сжималась */
+        }
+        .case-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background-color: var(--white);
+            color: #004524;
+        }
+        .case-content.open {
+            padding: 1.5rem;
+            max-height: 2000px;
+        }
+        .case-section {
+            margin-bottom: 2rem;
+            padding-left: 0;
+            position: relative;
+            margin-top: 0; /* Убрали отступ сверху, чтобы заголовок был ровно над контентом */
+        }
+        .case-section:first-child {
+            margin-top: 0; /* Убираем отступ у первой секции */
+        }
+        .case-section:last-child {
+            margin-bottom: 0;
+        }
+        .case-section h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+        .case-section.task h4::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-image: url('assets/icons/task.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            flex-shrink: 0;
+        }
+        .case-section.result h4::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-image: url('assets/icons/result.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        .case-section.task ul,
+        .case-section.result ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-top: 0;
+        }
+        .case-section.task li,
+        .case-section.result li {
+            position: relative;
+            padding: 0.5rem 0;
+            line-height: 1.5;
+            padding-left: 1.5rem;
+        }
+        .case-section.task li::before,
+        .case-section.result li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 6px;
+            height: 6px;
+            background-color: var(--gold);
+            border-radius: 0;
+            transform: none;
+        }
+
+        /* ==================== ОБРАЗОВАНИЕ - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        .education {
+            padding: 60px 10%;
+            background-color: var(--beige);
+        }
+        .education-columns {
+            display: flex;
+            gap: 3rem;
+            max-width: 1000px; /* УМЕНЬШЕНО с 1200px */
+            margin: 0 auto;
+        }
+        .education-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .education-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #004524;
+            text-align: center;
+            font-weight: 600;
+        }
+        .education-content {
+            flex: 1;
+            padding: 1.2rem; /* Уменьшили внутренние отступы для сокращения высоты */
+            background-color: var(--white);
+            border-radius: 8px;
+            border: 2px solid var(--gold);
+            min-height: auto; /* Убрали фиксированную высоту */
+        }
+        .education-item {
+            margin-bottom: 1.2rem; /* Уменьшили отступ между пунктами */
+            padding-bottom: 1.2rem;
+        }
+        /* 1. Убираем линии под пунктами в "Основном" */
+        .education-column:first-child .education-content .education-item {
+            border-bottom: none; /* Убираем линию под единственным пунктом */
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* 2. Обрабатываем линии в "Повышении квалификации" */
+        .education-column:nth-child(2) .education-content .education-item {
+            border-bottom: 1px solid rgba(198, 167, 105, 0.3); /* Такая же линия, как в "Обо мне" */
+        }
+
+        /* 3. Убираем линию под последним пунктом в "Повышении квалификации" */
+        .education-column:nth-child(2) .education-content .education-item:last-child {
+            border-bottom: none; /* Убираем линию под последним пунктом */
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* 4. Увеличиваем размер шрифта у периодов обучения */
+        .education-year {
+            color: var(--gold);
+            font-weight: 400; /* Сделали чуть жирнее */
+            margin-bottom: 0.3rem;
+            display: block;
+            font-size: 1rem; /* Увеличили с 0.9rem */
+        }
+        .education-degree {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+            color: #004524;
+        }
+        .education-institution {
+            color: var(--brown);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        /* ПЛАШКА "АНГЛИЙСКИЙ ЯЗЫК" */
+        .language-card {
+            background-color: var(--white);
+            padding: 1.2rem; /* Уменьшили отступы */
+            margin-top: 2rem; /* Уменьшили отступ сверху */
+            border-radius: 8px;
+            border: 2px solid var(--gold);
+            max-width: calc(1000px); /* УМЕНЬШЕНО с 1200px */
+            width: calc(100%);
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box;
+        }
+        /* Увеличиваем размер шрифта у "Английский язык" */
+        .language-card .education-year {
+            font-size: 1rem; /* Увеличили с 0.9rem */
+            font-weight: 400;
+            color: var(--gold);
+        }
+
+        /* ==================== КОНТАКТЫ - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        .contacts {
+            padding: 60px 10%;
+            background-color: var(--white);
+        }
+        .contacts-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Плашка с зарплатой - предотвращаем разрыв цифр */
+        .salary {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            padding: 1.2rem;
+            background-color: var(--beige);
+            border-radius: 8px;
+            font-weight: 500;
+            border-left: 4px solid var(--gold);
+            color: #004524;
+            line-height: 1.5;
+        }
+        .salary-number {
+            white-space: nowrap; /* Запрещаем перенос цифр */
+            font-weight: 600;
+            color: var(--brown); /* Еловый цвет для акцента */
+        }
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+        .condition-card {
+            background-color: var(--white);
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--beige);
+        }
+        .condition-card h4 {
+            margin-bottom: 0.5rem;
+            color: #004524;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        /* Уменьшаем размер иконок */
+        .condition-icon {
+            filter: opacity(0.7);
+            margin: 0 auto 0.5rem;
+            width: 28px; /* Уменьшили с 35px */
+            height: 28px; /* Уменьшили с 35px */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 45%;
+            margin: 0 auto 1.5rem;
+        }
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--brown); /* ЕЛОВЫЙ ЦВЕТ */
+            color: var(--gold); /* ЗОЛОТОЙ ШРИФТ */
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid var(--gold);
+        }
+        .contact-btn:hover {
+            background-color: var(--beige); /* БЕЖЕВЫЙ ПРИ НАВЕДЕНИИ */
+            color: var(--brown); /* ЕЛОВЫЙ ШРИФТ ПРИ НАВЕДЕНИИ */
+            transform: translateY(-3px);
+        }
+        .contact-email {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            color: var(--gold);
+            text-decoration: none;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+        /* Текст согласия - уменьшаем ширину */
+        .consent-text {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--brown);
+            opacity: 0.7;
+            max-width: 400px; /* Уменьшили с 600px */
+            margin: 0 auto;
+            line-height: 1.4;
+            padding: 0;
+        }
+        .consent-text a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .consent-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* ==================== ФУТЕР - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        .footer {
+            background-color: var(--beige);
+            padding: 1rem 10%; /* Уменьшили padding */
+            margin-top: 2rem; /* Уменьшили отступ сверху */
+            text-align: center;
+            border-top: 1px solid var(--gold);
+            min-height: auto; /* Убираем фиксированную высоту */
+            width: 100%; /* Ширина во весь экран */
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-copyright {
+            color: var(--brown);
+            margin-bottom: 0.5rem; /* Уменьшили отступ */
+            font-size: 0.8rem; /* Чуть уменьшили шрифт */
+            line-height: 1.3; /* Уменьшили межстрочный интервал */
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem; /* Уменьшили расстояние между ссылками */
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem; /* Уменьшили отступ */
+        }
+        .footer-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.75rem; /* Уменьшили шрифт */
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: var(--brown);
+            text-decoration: underline;
+        }
+        .footer-disclaimer {
+            color: var(--brown);
+            font-size: 0.7rem; /* Уменьшили шрифт */
+            opacity: 0.7;
+            line-height: 1.3; /* Уменьшили межстрочный интервал */
+            margin-bottom: 0; /* Убираем нижний отступ */
+        }
+
+        /* ==================== КНОПКА "НАВЕРХ" - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2.5rem; /* Отодвинули от футера */
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(198, 167, 105, 0.3);
+            border: 2px solid var(--white);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background-color: var(--brown);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(198, 167, 105, 0.4);
+        }
+
+        .scroll-to-top:hover::after {
+            content: "Наверх";
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(245, 241, 232, 0.9); /* Полупрозрачный бежевый */
+            color: var(--brown);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 1001;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+            stroke: var(--white);
+            stroke-width: 2;
+        }
+
+        /* ==================== АДАПТИВНЫЕ СТИЛИ ==================== */
+
+        /* Большие десктопы (1400px и больше) */
+        @media (min-width: 1400px) {
+            .hero-photo-container {
+                flex: 0 0 400px;
+            }
+            .hero {
+                gap: 6rem; /* Еще больше расстояние на больших экранах */
+            }
+            .hero-content {
+                max-width: 750px;
+            }
+            .hero-description {
+                max-width: 650px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            /* Планшеты и маленькие десктопы (1200px и меньше) */
+            .skills-grid, .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .conditions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-buttons {
+                width: 70%;
+            }
+            .language-card {
+                max-width: calc(100%);
+                width: calc(100%);
+            }
+            /* Кейсы */
+            .case-toggle {
+                font-size: 1.6rem;
+            }
+            .case-section h4::before {
+                width: 22px;
+                height: 22px;
+            }
+            .case-section.task li,
+            .case-section.result li {
+                padding-left: 1.5rem;
+            }
+            .case-section.task li::before,
+            .case-section.result li::before {
+                width: 6px;
+                height: 6px;
+                top: 1rem;
+            }
+            /* Главный экран */
+            .hero {
+                gap: 4rem;
+                padding: 50px 8% 30px;
+                align-items: flex-start; /* Для планшетов возвращаем выравнивание по верху */
+            }
+            .hero-content {
+                max-width: 600px;
+            }
+            .hero-description {
+                max-width: 550px;
+            }
+            .consent-text {
+                max-width: 500px; /* Чуть больше на планшетах */
+            }
+        }
+
+        @media (max-width: 992px) {
+            /* Планшеты (992px и меньше) */
+            .hero-photo-container {
+                flex: 0 0 300px;
+            }
+            .hero {
+                gap: 3rem;
+                padding: 40px 6% 30px;
+                align-items: flex-start;
+            }
+            .hero-content {
+                max-width: 500px;
+            }
+            .hero-description {
+                max-width: 480px;
+                padding: 1.2rem 1.8rem;
+            }
+            .education-columns {
+                gap: 2rem;
+            }
+        }
+
+        /* Мобильная версия - ОПТИМИЗИРОВАНА */
+        @media (max-width: 768px) {
+            /* Главный экран */
+            .hero {
+                padding: 40px 5% 30px;
+                flex-direction: column;
+                gap: 2.5rem;
+                align-items: center;
+            }
+            .hero-photo-container {
+                flex: 0 0 100%;
+                max-width: 280px;
+                width: 100%;
+                margin-bottom: 0;
+            }
+            .hero-photo-img {
+                object-fit: contain;
+                max-height: 380px;
+            }
+            .hero-content {
+                max-width: 100%;
+                width: 100%;
+                align-items: center; /* Центрируем на мобильных */
+            }
+            .hero-name {
+                font-size: 2.2rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            }
+            .hero-description {
+                padding: 1.2rem;
+                max-width: 100%; /* На мобильных занимает всю ширину */
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .hero-description p {
+                font-size: 0.95rem;
+                padding: 0.5rem 0;
+            }
+            .hero-description p:first-child {
+                padding-top: 0;
+            }
+            .hero-description p:last-child {
+                padding-bottom: 0;
+            }
+            
+            /* Общие стили секций */
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            .skills, .achievements, .cases, .education, .contacts {
+                padding: 40px 5%;
+            }
+            .skills-grid, .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .skill-card {
+                padding: 1.2rem;
+            }
+            .skill-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            /* Достижения */
+            .num {
+                font-size: 3rem;
+            }
+            .symbol {
+                font-size: 1.5rem;
+            }
+            .achievement-card {
+                padding: 1.2rem;
+            }
+            .achievement-title {
+                font-size: 0.95rem;
+            }
+            
+            /* Кейсы */
+            .case-item {
+                margin-bottom: 1.2rem;
+            }
+            .case-header {
+                padding: 1.2rem;
+            }
+            .case-header h3 {
+                font-size: 1.15rem;
+                margin-bottom: 0.2rem; /* Уменьшили отступ для мобильных */
+            }
+            .case-toggle {
+                font-size: 1.5rem;
+                min-width: 20px;
+            }
+            .case-content {
+                padding: 0 1.2rem;
+            }
+            .case-content.open {
+                padding: 1.2rem;
+            }
+            .case-section {
+                padding-left: 0;
+                margin-top: 0;
+            }
+            .case-section h4 {
+                font-size: 1.05rem;
+                gap: 0.8rem;
+                margin-bottom: 0.8rem; /* Уменьшили отступ для мобильных */
+            }
+            .case-section h4::before {
+                width: 20px;
+                height: 20px;
+            }
+            .case-section.task ul,
+            .case-section.result ul {
+                padding-left: 1.2rem;
+            }
+            .case-section.task li,
+            .case-section.result li {
+                padding: 0.4rem 0;
+                padding-left: 1.5rem;
+            }
+            .case-section.task li::before,
+            .case-section.result li::before {
+                width: 6px;
+                height: 6px;
+                top: 0.9rem;
+            }
+            
+            /* Образование */
+            .education-columns {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .education-content {
+                padding: 1rem; /* Еще меньше на мобильных */
+            }
+            .education-item {
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+            .education-year {
+                font-size: 0.95rem; /* Чуть меньше на мобильных */
+            }
+            .language-card {
+                padding: 1rem;
+                margin-top: 1.5rem;
+            }
+            .language-card .education-year {
+                font-size: 0.95rem; /* Чуть меньше на мобильных */
+            }
+            
+            /* Контакты */
+            .conditions-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .condition-card {
+                padding: 1rem;
+            }
+            .condition-icon {
+                width: 26px; /* Немного меньше на мобильных */
+                height: 26px;
+            }
+            .contact-buttons {
+                width: 100%;
+                gap: 0.8rem;
+            }
+            .contact-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            .salary {
+                font-size: 1.1rem;
+                padding: 1rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+            .consent-text {
+                max-width: 100%; /* На мобильных занимает всю ширину */
+                padding: 0 1rem;
+                font-size: 0.75rem;
+            }
+            
+            /* Футер */
+            .footer {
+                padding: 1rem 5%;
+                margin-top: 2rem;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .footer-link {
+                font-size: 0.7rem;
+            }
+            
+            .footer-copyright {
+                font-size: 0.75rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .footer-disclaimer {
+                font-size: 0.65rem;
+            }
+
+            /* Кнопка "Наверх" для мобильных */
+            .scroll-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 2rem; /* Отодвинули от футера */
+                left: 1.5rem;
+            }
+            
+            .scroll-to-top svg {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .scroll-to-top:hover::after {
+                top: -30px;
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Маленькие мобильные (480px и меньше) */
+            .hero-photo-container {
+                max-width: 240px;
+            }
+            .hero-photo-img {
+                max-height: 320px;
+            }
+            .hero-name {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            /* Достижения */
+            .num {
+                font-size: 2.5rem;
+            }
+            /* Кейсы */
+            .case-header h3 {
+                font-size: 1.05rem;
+            }
+            .case-toggle {
+                font-size: 1.3rem;
+            }
+            .case-section h4 {
+                font-size: 1rem;
+                gap: 0.6rem;
+            }
+            .case-section h4::before {
+                width: 18px;
+                height: 18px;
+            }
+            .case-section.task li,
+            .case-section.result li {
+                padding-left: 1.3rem;
+            }
+            .case-section.task li::before,
+            .case-section.result li::before {
+                width: 6px;
+                height: 6px;
+                top: 0.85rem;
+            }
+            .contact-email {
+                font-size: 0.9rem;
+            }
+            .salary {
+                font-size: 1rem;
+            }
+            /* Адаптация цифр зарплаты на очень маленьких экранах */
+            .salary-number {
+                display: inline-block;
+            }
+            .education-year {
+                font-size: 0.9rem;
+            }
+            .language-card .education-year {
+                font-size: 0.9rem;
+            }
+            
+            /* Футер */
+            .footer {
+                padding: 0.8rem 5%;
+            }
+            
+            .footer-links {
+                gap: 0.8rem;
+                flex-direction: column;
+            }
+            
+            .footer-copyright {
+                font-size: 0.7rem;
+                margin-bottom: 0.3rem;
+            }
+
+            /* Кнопка "Наверх" для очень маленьких экранов */
+            .scroll-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 1.5rem;
+                left: 1rem;
+            }
+            
+            .scroll-to-top svg {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .scroll-to-top:hover::after {
+                top: -25px;
+                font-size: 0.65rem;
+                padding: 3px 6px;
+            }
+        }
+
+        /* Очень маленькие экраны (360px и меньше) */
+        @media (max-width: 360px) {
+            .hero-photo-container {
+                max-width: 220px;
+            }
+            .hero-photo-img {
+                max-height: 300px;
+            }
+            .hero-name {
+                font-size: 1.6rem;
+            }
+            /* Кейсы */
+            .case-header {
+                padding: 1rem;
+            }
+            .case-header h3 {
+                font-size: 0.95rem;
+            }
+            .case-toggle {
+                font-size: 1.2rem;
+            }
+            .case-section.task li,
+            .case-section.result li {
+                padding-left: 1.2rem;
+            }
+            .case-section.task li::before,
+            .case-section.result li::before {
+                top: 0.8rem;
+            }
+            .hero-description {
+                padding: 1rem;
+            }
+            .salary {
+                font-size: 0.95rem;
+                padding: 0.8rem;
+            }
+            .condition-icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Обложка (HERO) -->
+    <section id="about" class="hero">
+        <div class="hero-photo-container">
+            <picture>
+                <source srcset="assets/images/photo-hero.webp" type="image/webp">
+                <img src="assets/images/photo-hero.jpg" 
+                     alt="Якобчук Ольга - финансист" 
+                     loading="eager" 
+                     class="hero-photo-img"
+                     width="417"
+                     height="567">
+            </picture>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-name"><span>Ольга</span> <span>Якобчук</span></h1>
+            <div class="hero-description">
+                <p>13+ лет в финансах с опытом в ключевых отраслях: EdTech, производство, строительство, услуги, торговля, страхование.</p>
+                <p>Специализируюсь на финансовом анализе, построении отчётности и автоматизации процессов.</p>
+                <p>Ценю задачи, где нужно разобрать сложные данные, найти причину и предложить рабочее решение.</p>
+                <p>Ищу позицию в технологической или динамичной компании, где смогу применять навыки для принятия стратегических решений - от Unit-экономики до оптимизации операционных процессов.</p>
+                <p>Моя цель - приносить пользу бизнесу и давать рекомендации, которые будут влиять на результат.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Компетенции -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Компетенции</h2>
+        <div class="skills-grid">
+            <div class="skill-card"><h3>Управленческий учёт</h3><ul><li>P&L, Cash Flow</li><li>План-факт-прогноз</li><li>Консолидация</li></ul></div>
+            <div class="skill-card"><h3>Бюджетирование и моделирование</h3><ul><li>Unit-экономика</li><li>Сценарные модели</li><li>Финансовые модели</li></ul></div>
+            <div class="skill-card"><h3>Оптимизация расходов</h3><ul><li>Анализ CAC/LTV</li><li>Внедрение KPI</li><li>Системы лимитирования</li></ul></div>
+            <div class="skill-card"><h3>Финансовый контроль</h3><ul><li>Аудит процессов</li><li>Выявление убытков</li><li>Контроль ДЗ/КЗ</li></ul></div>
+            <div class="skill-card"><h3>Автоматизация</h3><ul><li>Excel (Power Query)</li><li>1C, CRM</li><li>«План-Факт»</li></ul></div>
+            <div class="skill-card"><h3>Взаимодействие</h3><ul><li>Работа с отделами</li><li>Банки, регуляторы</li><li>Постановка процессов</li></ul></div>
+        </div>
+    </section>
+
+    <!-- Достижения -->
+    <section id="achievements" class="achievements">
+        <h2 class="section-title">Ключевые достижения</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card"><div class="number"><span class="num" data-target="-25">0</span><span class="symbol">%</span></div><div class="achievement-title">Снижение маркетинговых расходов</div><div class="achievement-desc">За счёт анализа unit-экономики</div></div>
+            <div class="achievement-card"><div class="number"><span class="num" data-target="-15">0</span><span class="symbol">%</span></div><div class="achievement-title">Снижение расходов на ФОТ за 3 месяца</div><div class="achievement-desc">Оптимизация KPI и структуры команды</div></div>
+            <div class="achievement-card"><div class="number"><span class="num" data-target="90">0</span><span class="symbol">%</span></div><div class="achievement-title">Ошибок в платежах устранено</div><div class="achievement-desc">Через стандартизацию процессов</div></div>
+            <div class="achievement-card"><div class="number"><span class="num" data-target="300">0</span><span class="symbol"> тыс. ₽</span></div><div class="achievement-title">Возвращено в оборот</div><div class="achievement-desc">Через аудит платежных операций</div></div>
+            <div class="achievement-card"><div class="number"><span class="num" data-target="15">0</span><span class="symbol"> ч/мес</span></div><div class="achievement-title">Высвобождено для анализа</div><div class="achievement-desc">За счёт автоматизации отчётности</div></div>
+        </div>
+    </section>
+
+    <!-- Кейсы -->
+    <section id="cases" class="cases">
+        <h2 class="section-title">Кейсы</h2>
+        <div class="cases-accordion">
+            <div class="case-item">
+                <div class="case-header">
+                    <div class="case-info">
+                        <h3>ООО «Хекслет Рус», EdTech</h3>
+                        <div class="case-period">06.2023 – 12.2024</div>
+                    </div>
+                    <div class="case-toggle">▸</div>
+                </div>
+                <div class="case-content">
+                    <div class="case-section task">
+                        <h4>Задача</h4>
+                        <ul>
+                            <li>Построить финансовую функцию для растущего IT-стартапа, где управление велось по банковской выписке.</li>
+                        </ul>
+                    </div>
+                    <div class="case-section result">
+                        <h4>Результат</h4>
+                        <ul>
+                            <li>Внедрила с нуля управленческий учёт (P&L/CF) в сервисе «План-Факт», что дало собственнику инструмент для контроля рентабельности в реальном времени.</li>
+                            <li>Запустила процесс бюджетирования и план-фактного анализа, обеспечив основу для ежемесячных корректировок.</li>
+                            <li>Провела анализ unit-экономики продуктов, что позволило перераспределить маркетинговый бюджет и скорректировать цены, снизив ежемесячные расходы на маркетинг на 25%.</li>
+                            <li>Выявила дебиторскую задолженность в сумме более 340 тыс. руб. благодаря аудиту эквайринговых операций и сторонних сервисов.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="case-item">
+                <div class="case-header">
+                    <div class="case-info">
+                        <h3>Международный аэропорт «Краснодар»</h3>
+                        <div class="case-period">10.2022 – 06.2023</div>
+                    </div>
+                    <div class="case-toggle">▸</div>
+                </div>
+                <div class="case-content">
+                    <div class="case-section task">
+                        <h4>Задача</h4>
+                        <ul>
+                            <li>Обеспечить обоснование расходов для тарифного регулирования и оптимизировать взаимодействие с госорганом.</li>
+                        </ul>
+                    </div>
+                    <div class="case-section result">
+                        <h4>Результат</h4>
+                        <ul>
+                            <li>В ходе формирования тарифного дела выявила и документально обосновала неучтённые фактические расходы, что повлияло на итоговый утверждённый размер тарифа.</li>
+                            <li>Полностью автоматизировала формирование ежемесячной отчётности для Департамента гос. регулирования цен, сократив время подготовки с 6 до 1 часа.</li>
+                            <li>Создала пакет внутренних инструкций, стандартизировавший процесс подготовки данных.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="case-item">
+                <div class="case-header">
+                    <div class="case-info">
+                        <h3>ООО «МонтажТехСтрой», промышленное строительство</h3>
+                        <div class="case-period">05.2018 – 05.2020</div>
+                    </div>
+                    <div class="case-toggle">▸</div>
+                </div>
+                <div class="case-content">
+                    <div class="case-section task">
+                        <h4>Задача</h4>
+                        <ul>
+                            <li>Внедрить финансовую дисциплину и систему управления денежными потоками в условиях хаотичных платежей.</li>
+                        </ul>
+                    </div>
+                    <div class="case-section result">
+                        <h4>Результат</h4>
+                        <ul>
+                            <li>Ввела систему лимитов расходов по отделам и оперативный бюджет, что сократило время на согласование платежей на 40% и передало финансовую ответственность руководителям.</li>
+                            <li>Создала резервные фонды под налоги и срочные платежи, что системно устранило риски кассовых разрывов и штрафов.</li>
+                            <li>Стандартизировала процесс согласования платежей, минимизировав ошибки в платёжных документах на 90%.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Образование -->
+    <section id="education" class="education">
+        <h2 class="section-title">Образование</h2>
+        <div class="education-columns">
+            <div class="education-column"><h3>Основное</h3><div class="education-content"><div class="education-item"><span class="education-year">2008</span><div class="education-degree">Экономика и управление предприятием, бакалавр</div><div class="education-institution">Современная гуманитарная академия</div></div></div></div>
+            <div class="education-column"><h3>Повышение квалификации</h3><div class="education-content"><div class="education-item"><span class="education-year">2020</span><div class="education-degree">Управленческий учёт и бюджетирование</div><div class="education-institution">ЧУ ДПО «ЭмМенеджмент»</div></div><div class="education-item"><span class="education-year">2022</span><div class="education-degree">Корпоративные финансы</div><div class="education-institution">РАНХиГС</div></div><div class="education-item"><span class="education-year">2024</span><div class="education-degree">Финансовый директор: базовый уровень</div><div class="education-institution">ИП Бурцева Софья Дмитриевна</div></div></div></div>
+        </div>
+        <div class="language-card"><span class="education-year">Английский язык</span><div class="education-degree">Уровень, достаточный для работы с отчётностью и интерфейсами ПО.</div><div class="education-institution">Готова углублять знания.</div></div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="contacts">
+        <div class="contacts-container">
+            <h2 class="section-title">Сотрудничество и контакты</h2>
+            <div class="salary">Ожидания по зарплате <span class="salary-number">120 000 – 150 000</span> рублей (net)</div>
+            <div class="conditions-grid">
+                <div class="condition-card">
+                    <!-- ИКОНКА УДАЛЁННОЙ РАБОТЫ -->
+                    <div class="condition-icon" style="background-image: url('assets/icons/monitor.svg')"></div>
+                    <p>Удалённо</p>
+                </div>
+                <div class="condition-card">
+                    <!-- ИКОНКА ДОКУМЕНТА -->
+                    <div class="condition-icon" style="background-image: url('assets/icons/document.svg')"></div>
+                    <p>Трудовой договор, полная занятость</p>
+                </div>
+                <div class="condition-card">
+                    <!-- ИКОНКА ЧАСОВ -->
+                    <div class="condition-icon" style="background-image: url('assets/icons/clock.svg')"></div>
+                    <p>MSK (Московское)</p>
+                </div>
+                <div class="condition-card">
+                    <!-- ИКОНКА ЛОКАЦИИ -->
+                    <div class="condition-icon" style="background-image: url('assets/icons/location.svg')"></div>
+                    <p>Краснодарский край</p>
+                </div>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://krasnodar.hh.ru/resume/011274acff0fdc185f0039ed1f383678704355" target="_blank" class="contact-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>Полное резюме на HeadHunter</span></a>
+                <a href="https://t.me/sok_ola?text=Здравствуйте!%20Пишу%20с%20вашего%20сайта%20по%20поводу%20вакансии." target="_blank" class="contact-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg><span>Написать в Telegram</span></a>
+            </div>
+            <a href="mailto:olgadata@yandex.ru" class="contact-email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span>olgadata@yandex.ru</span></a>
+            
+            <!-- Текст согласия -->
+            <div class="consent-text">
+                Нажимая на кнопки перехода, вы подтверждаете, что ознакомились с 
+                <a href="agreement.html" target="_blank">Пользовательским соглашением</a> 
+                и даёте согласие на обработку персональных данных в соответствии с 
+                <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>.
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-copyright">
+                © 2026 Якобчук Ольга Васильевна. Все права защищены.
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html" class="footer-link" target="_blank">Политика конфиденциальности</a>
+                <a href="agreement.html" class="footer-link" target="_blank">Пользовательское соглашение</a>
+                <a href="mailto:olgadata@yandex.ru" class="footer-link">Контактная информация</a>
+            </div>
+            <div class="footer-disclaimer">
+                Сайт создан в профессиональных целях. Информация носит ознакомительный характер.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка для возврата в начало -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ==================== 1. ОБЩИЙ OBSERVER ДЛЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ ====================
+            const generalObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        generalObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Добавляем наблюдение для skill-card И achievement-card
+            document.querySelectorAll('.skill-card, .achievement-card').forEach(card => {
+                generalObserver.observe(card);
+            });
+
+            // ==================== 2. НОВАЯ АНИМАЦИЯ ДЛЯ ДОСТИЖЕНИЙ ====================
+            const achievementsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.hasAttribute('data-animated')) {
+                        // Сначала показываем саму карточку
+                        entry.target.classList.add('visible');
+                        
+                        // Получаем элементы для анимации
+                        const numElement = entry.target.querySelector('.num');
+                        const symbolElement = entry.target.querySelector('.symbol');
+                        const titleElement = entry.target.querySelector('.achievement-title');
+                        const descElement = entry.target.querySelector('.achievement-desc');
+                        
+                        // Получаем целевое значение
+                        const target = parseInt(numElement.getAttribute('data-target'));
+                        
+                        // Функция для анимации появления цифры (из точки)
+                        const animateNumber = () => {
+                            // Сначала ставим начальное значение 0
+                            numElement.textContent = '0';
+                            
+                            // Показываем цифру с анимацией
+                            setTimeout(() => {
+                                numElement.classList.add('visible');
+                                numElement.textContent = target; // Устанавливаем финальное значение
+                                
+                                // Показываем символ с задержкой
+                                setTimeout(() => {
+                                    if (symbolElement) symbolElement.classList.add('visible');
+                                }, 200);
+                                
+                                // Показываем заголовок с задержкой
+                                setTimeout(() => {
+                                    if (titleElement) titleElement.classList.add('visible');
+                                }, 400);
+                                
+                                // Показываем описание с задержкой
+                                setTimeout(() => {
+                                    if (descElement) descElement.classList.add('visible');
+                                }, 600);
+                                
+                            }, 100);
+                        };
+                        
+                        // Запускаем анимацию с небольшой задержкой после появления карточки
+                        setTimeout(animateNumber, 200);
+                        
+                        entry.target.setAttribute('data-animated', 'true');
+                        achievementsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            // Наблюдаем за всеми карточками достижений
+            document.querySelectorAll('.achievement-card').forEach(card => {
+                achievementsObserver.observe(card);
+            });
+
+            // ==================== 3. АККОРДЕОН ДЛЯ КЕЙСОВ - ОБНОВЛЕННЫЙ ====================
+            const caseItems = document.querySelectorAll('.case-item');
+            caseItems.forEach(item => {
+                const header = item.querySelector('.case-header');
+                const content = item.querySelector('.case-content');
+                const toggle = item.querySelector('.case-toggle');
+                
+                // Клик по всему кейсу (любому месту)
+                item.addEventListener('click', (e) => {
+                    const isOpen = content.classList.contains('open');
+                    
+                    // Закрываем все остальные кейсы
+                    caseItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.querySelector('.case-content').classList.remove('open');
+                            otherItem.querySelector('.case-toggle').textContent = '▸';
+                        }
+                    });
+                    
+                    // Переключаем текущий кейс
+                    content.classList.toggle('open');
+                    toggle.textContent = content.classList.contains('open') ? '▾' : '▸';
+                    
+                    // Если закрываем кейс — плавно скроллим к его заголовку
+                    if (isOpen) {
+                        setTimeout(() => {
+                            header.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest'
+                            });
+                        }, 50);
+                    }
+                });
+            });
+
+            // ==================== 4. ПЛАВНАЯ ПРОКРУТКА ПРИ НАЖАТИИ НА ССЫЛКИ В ФУТЕРЕ ====================
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // ==================== 5. ДИАГНОСТИКА ЗАГРУЗКИ ИЗОБРАЖЕНИЙ ====================
+            console.log('Проверка загрузки изображений...');
+            
+            // Проверка главного фото
+            const mainImage = document.querySelector('.hero-photo-img');
+            if (mainImage) {
+                const imgTest = new Image();
+                imgTest.onload = function() {
+                    console.log('✅ Главное фото загружено:', mainImage.src);
+                };
+                imgTest.onerror = function() {
+                    console.error('❌ Ошибка загрузки главного фото:', mainImage.src);
+                };
+                imgTest.src = mainImage.src;
+            }
+            
+            // Проверка иконок
+            const iconPaths = [
+                'assets/icons/task.svg',
+                'assets/icons/result.svg',
+                'assets/icons/monitor.svg',
+                'assets/icons/document.svg',
+                'assets/icons/clock.svg',
+                'assets/icons/location.svg',
+                'assets/icons/favicon.svg'
+            ];
+            
+            iconPaths.forEach(path => {
+                const iconTest = new Image();
+                iconTest.onload = function() {
+                    console.log('✅ Иконка загружена:', path);
+                };
+                iconTest.onerror = function() {
+                    console.error('❌ Ошибка загрузки иконки:', path);
+                };
+                iconTest.src = path;
+            });
+            
+            // ==================== 6. ПЛАВНОЕ ПОЯВЛЕНИЕ СЕКЦИЙ ПРИ СКРОЛЛЕ ====================
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Наблюдаем за всеми секциями
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                sectionObserver.observe(section);
+            });
+
+            // ==================== 7. КНОПКА "НАВЕРХ" С ИЗБЕЖАНИЕМ ПЕРЕКРЫТИЯ ФУТЕРА ====================
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            const footer = document.querySelector('.footer');
+
+            // Функция для обновления позиции кнопки
+            const updateScrollToTopPosition = () => {
+                const footerRect = footer.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                
+                // Если футер виден в окне браузера
+                if (footerRect.top < viewportHeight) {
+                    // Вычисляем расстояние от футера до нижнего края окна
+                    const distanceFromFooter = footerRect.top - viewportHeight;
+                    // Устанавливаем отступ для кнопки, чтобы она не перекрывала футер
+                    scrollToTopBtn.style.bottom = `${Math.max(20, -distanceFromFooter + 20)}px`;
+                } else {
+                    // Если футер не виден, возвращаем стандартное положение
+                    scrollToTopBtn.style.bottom = '2.5rem';
+                }
+            };
+
+            // Показываем/скрываем кнопку при прокрутке
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                    updateScrollToTopPosition();
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+
+            // Плавная прокрутка в начало при клике
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Обновляем позицию при изменении размера окна
+            window.addEventListener('resize', updateScrollToTopPosition);
+            
+            // Инициализируем начальную позицию
+            updateScrollToTopPosition();
+        });
+    </script>
+</body>
+</html>
