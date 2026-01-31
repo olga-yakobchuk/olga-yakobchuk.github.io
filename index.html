@@ -105,7 +105,7 @@
             border-bottom: 1px solid rgba(198, 167, 105, 0.3); /* Более светлая золотая линия */
         }
 
-        /* Компетенции */
+        /* ==================== КОМПЕТЕНЦИИ - ОБНОВЛЕННЫЕ СТИЛИ (4 КАРТОЧКИ 2x2) ==================== */
         .skills {
             padding: 60px 10%;
             background-color: var(--beige);
@@ -119,12 +119,14 @@
         }
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr); /* 2 колонки на десктопе */
+            gap: 2rem;
+            max-width: 1200px; /* ВОЗВРАЩАЕМ ширину 1200px */
+            margin: 0 auto;
         }
         .skill-card {
             background-color: var(--white);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
@@ -132,41 +134,87 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            position: relative;
         }
         .skill-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
         .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-            box-shadow: 0 8px 25px rgba(198, 167, 105, 0.2);
+            transform: translateY(-5px); /* Оставляем только эффект приподнятия */
         }
+        /* Заголовок с иконкой */
         .skill-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #004524; /* Изменено на темно-зеленый */
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem; /* УМЕНЬШЕНО с 1.5rem */
+            color: #004524;
             font-weight: 600;
+            line-height: 1.3;
+            padding-left: 2.8rem; /* Отступ для иконки - УМЕНЬШЕНО для выравнивания */
+            position: relative;
+            min-height: 2.5rem; /* Минимальная высота для выравнивания */
+            display: flex;
+            align-items: center;
+        }
+        /* Иконки перед заголовками (минималистичные, золотые, тонкие линии) */
+        .skill-card h3::before {
+            content: '';
+            position: absolute;
+            left: 0; /* Иконки теперь начинаются с 0, как буллиты */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 2rem;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+        /* Иконка для "Управленческий учёт" - диаграмма/график */
+        .skill-card:nth-child(1) h3::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C6A769' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 3v18h18'/%3E%3Cpath d='M7 14l4-4 4 4 4-4'/%3E%3C/svg%3E");
+        }
+        /* Иконка для "Финансовое моделирование" - калькулятор/график */
+        .skill-card:nth-child(2) h3::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C6A769' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='4' width='16' height='16' rx='2'/%3E%3Cpath d='M8 8h8'/%3E%3Cpath d='M8 12h8'/%3E%3Cpath d='M8 16h8'/%3E%3C/svg%3E");
+        }
+        /* Иконка для "Операционный контроль" - щит/контроль */
+        .skill-card:nth-child(3) h3::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C6A769' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3Cpath d='M12 8v4'/%3E%3Cpath d='M12 16h.01'/%3E%3C/svg%3E");
+        }
+        /* Иконка для "Автоматизация и взаимодействие" - шестеренка/связь */
+        .skill-card:nth-child(4) h3::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C6A769' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z'/%3E%3C/svg%3E");
         }
         .skill-card ul {
             list-style: none;
+            padding: 0;
+            margin-top: 0; /* Убираем отступ сверху списка */
         }
+        
+        /* ==================== КОМПЕТЕНЦИИ - ИСПРАВЛЕНИЯ ==================== */
+        /* Убираем padding-left у элементов списка, чтобы текст был под заголовком */
         .skill-card li {
-            padding: 0.3rem 0;
+            padding: 0.25rem 0;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 0; /* УБИРАЕМ отступ слева для текста */
+            line-height: 1.4;
+            font-size: 1rem;
+            margin-left: 2.8rem; /* Добавляем отступ, равный отступу заголовка */
         }
+
+        /* Смещаем буллиты правее, чтобы они были по центру иконки */
         .skill-card li::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 0.8rem;
+            left: -1.8rem; /* Смещаем буллит влево, чтобы он был по центру иконки */
+            top: 0.7rem;
             width: 6px;
             height: 6px;
             background-color: var(--gold);
         }
 
-        /* ==================== ДОСТИЖЕНИЯ - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        /* ==================== ДОСТИЖЕНИЯ - ОБНОВЛЕННЫЕ СТИЛИ (меньше ширина карточек) ==================== */
         .achievements {
             padding: 60px 10%;
             background-color: var(--white);
@@ -174,7 +222,9 @@
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 2rem; /* УВЕЛИЧЕНО с 1.5rem для большего расстояния между карточками */
+            max-width: 1200px; /* Добавим ограничение ширины как в компетенциях */
+            margin: 0 auto;
         }
         .achievement-card {
             background-color: var(--white);
@@ -186,8 +236,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border: 2px solid transparent; /* Добавили прозрачную рамку для анимации */
-            transition: all 0.3s ease; /* Добавили плавный переход */
+            border: 1px solid var(--gold); /* ПОСТОЯННАЯ ТОНКАЯ ЗОЛОТАЯ РАМКА */
+            transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
         }
@@ -195,11 +245,11 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Эффект при наведении как в "Компетенциях" */
+        /* Эффект при наведении - только приподнятие, без изменения рамки */
         .achievement-card:hover {
             transform: translateY(-5px);
-            border-color: var(--gold);
             box-shadow: 0 8px 25px rgba(198, 167, 105, 0.2);
+            /* border-color не меняем, рамка остается той же */
         }
         .number {
             font-family: 'Playfair Display', serif;
@@ -260,7 +310,7 @@
             transform: translateY(0);
         }
 
-        /* ==================== КЕЙСЫ - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
+        /* ==================== КЕЙСЫ - ОБНОВЛЕННЫЕ СТИЛИ С ЭФФЕКТАМИ ПРИ НАВЕДЕНИИ ==================== */
         .cases {
             padding: 60px 10%;
             background-color: var(--white);
@@ -269,17 +319,46 @@
             max-width: 900px;
             margin: 0 auto;
         }
+
+        /* ==================== КЕЙСЫ - ВОЗВРАЩАЕМ БЕЛЫЙ ФОН И УБИРАЕМ ЭФФЕКТЫ ==================== */
         .case-item {
             margin-bottom: 1.5rem;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            border-left: 4px solid transparent; /* Прозрачная граница для анимации */
+            background-color: var(--white);
         }
+
+        /* Эффект приподнятия при наведении на всю карточку */
         .case-item:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(198, 167, 105, 0.15);
+            border-left-color: var(--gold); /* Тонкая золотая линия слева */
         }
+
+        /* Плавное появление линии слева при наведении */
+        .case-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        /* Линия появляется при наведении на всю карточку */
+        .case-item:hover::before {
+            width: 4px;
+        }
+
         .case-header {
             padding: 1.5rem;
             background-color: var(--beige);
@@ -288,7 +367,17 @@
             font-weight: 500;
             border-left: 4px solid var(--gold);
             border-bottom: 1px solid rgba(198, 167, 105, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
+
+        /* Убираем изменение фона заголовка при наведении */
+        .case-header:hover {
+            background-color: var(--beige); /* Оставляем стандартный бежевый */
+        }
+
         .case-info {
             flex: 1;
             width: 100%; /* Чтобы заголовок занимал всю ширину */
@@ -300,33 +389,89 @@
             color: #004524;
             margin-bottom: 0.3rem; /* Уменьшили отступ для лучшего выравнивания */
         }
+        
+        /* Убираем эффект изменения цвета даты при наведении - оставляем всегда золотым */
         .case-period {
-            color: var(--gold); /* ВЕРНУЛИ ЗОЛОТОЙ ЦВЕТ */
+            color: var(--gold); /* ВСЕГДА ЗОЛОТОЙ ЦВЕТ */
             font-weight: 400;
             font-size: 0.9rem;
             margin-bottom: 0;
+            transition: none; /* Убираем переход */
         }
-        .case-toggle {
-            font-size: 1.8rem;
+
+        /* ==================== КНОПКА "ПОДРОБНЕЕ" - НОВЫЕ СТИЛИ ==================== */
+        .case-toggle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--white);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
             color: var(--gold);
-            margin-left: 1rem;
-            transition: transform 0.3s ease;
-            font-weight: 700;
-            min-width: 24px;
-            flex-shrink: 0; /* Чтобы стрелка не сжималась */
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+            margin-left: auto; /* Выравнивание кнопки вправо */
+            flex-shrink: 0;
         }
+
+        .case-toggle-wrapper:hover {
+            background-color: var(--beige);
+            color: var(--brown);
+            border-color: var(--brown);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(198, 167, 105, 0.15);
+        }
+
+        .toggle-text {
+            font-weight: 500;
+        }
+
+        .case-toggle-arrow {
+            font-size: 0.9rem;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            line-height: 1;
+        }
+
+        /* Анимация стрелки при открытом состоянии */
+        .case-content.open + .case-header .case-toggle-arrow {
+            transform: rotate(90deg);
+        }
+
+        /* Изменение стиля кнопки при открытом состоянии */
+        .case-content.open + .case-header .case-toggle-wrapper {
+            background-color: var(--beige);
+            color: var(--brown);
+            border-color: var(--brown);
+        }
+
         .case-content {
             padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
-            background-color: var(--white);
+            background-color: var(--white); /* ВОЗВРАЩАЕМ БЕЛЫЙ ФОН */
             color: #004524;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
+
         .case-content.open {
             padding: 1.5rem;
             max-height: 2000px;
+            background-color: var(--white); /* ВОЗВРАЩАЕМ БЕЛЫЙ ФОН */
         }
+
+        /* Улучшаем видимость открытого состояния - оставляем только стандартную рамку */
+        .case-content.open + .case-header {
+            border-left-color: var(--gold); /* Стандартная золотая рамка */
+            background-color: var(--beige); /* Стандартный бежевый фон */
+        }
+
         .case-section {
             margin-bottom: 2rem;
             padding-left: 0;
@@ -400,6 +545,18 @@
             background-color: var(--gold);
             border-radius: 0;
             transform: none;
+        }
+
+        /* Адаптивные стили для мобильных устройств */
+        @media (max-width: 768px) {
+            .case-item:hover {
+                transform: translateY(-4px); /* Меньше поднятие на мобильных */
+                box-shadow: 0 8px 20px rgba(198, 167, 105, 0.12);
+            }
+            
+            .case-item::before {
+                display: none; /* На мобильных скрываем линию слева для экономии места */
+            }
         }
 
         /* ==================== ОБРАЗОВАНИЕ - ОБНОВЛЕННЫЕ СТИЛИ ==================== */
@@ -674,6 +831,9 @@
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(198, 167, 105, 0.3);
             border: 2px solid var(--white);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
         }
 
         .scroll-to-top.visible {
@@ -683,6 +843,7 @@
 
         .scroll-to-top:hover {
             background-color: var(--brown);
+            color: var(--gold);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(198, 167, 105, 0.4);
         }
@@ -703,14 +864,6 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .scroll-to-top svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--white);
-            stroke: var(--white);
-            stroke-width: 2;
-        }
-
         /* ==================== АДАПТИВНЫЕ СТИЛИ ==================== */
 
         /* Большие десктопы (1400px и больше) */
@@ -727,12 +880,23 @@
             .hero-description {
                 max-width: 650px;
             }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr); /* Остается 2 колонки */
+                gap: 2.5rem; /* Увеличиваем отступы на больших экранах */
+            }
+            .achievements-grid {
+                gap: 2.5rem; /* Увеличиваем отступ и на больших экранах */
+            }
         }
 
         @media (max-width: 1200px) {
             /* Планшеты и маленькие десктопы (1200px и меньше) */
-            .skills-grid, .achievements-grid {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+            }
+            .achievements-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem; /* На планшетах возвращаем стандартный gap */
             }
             .conditions-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -745,9 +909,6 @@
                 width: calc(100%);
             }
             /* Кейсы */
-            .case-toggle {
-                font-size: 1.6rem;
-            }
             .case-section h4::before {
                 width: 22px;
                 height: 22px;
@@ -776,6 +937,15 @@
             }
             .consent-text {
                 max-width: 500px; /* Чуть больше на планшетах */
+            }
+            
+            /* Адаптивные стили для планшетов (1200px и меньше) - сохраняем исправления */
+            .skill-card li {
+                margin-left: 2.8rem;
+            }
+            
+            .skill-card li::before {
+                left: -1.8rem;
             }
         }
 
@@ -856,15 +1026,38 @@
             .skills, .achievements, .cases, .education, .contacts {
                 padding: 40px 5%;
             }
-            .skills-grid, .achievements-grid {
+            .skills-grid {
+                grid-template-columns: 1fr; /* 1 колонка на мобильных */
+                gap: 1.5rem;
+            }
+            .achievements-grid {
                 grid-template-columns: 1fr;
                 gap: 1.2rem;
             }
             .skill-card {
-                padding: 1.2rem;
+                padding: 1.5rem;
             }
             .skill-card h3 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+                padding-left: 2.8rem;
+            }
+            .skill-card h3::before {
+                width: 1.8rem;
+                height: 1.8rem;
+            }
+            
+            /* Компетенции на мобильных */
+            .skill-card li {
+                font-size: 1rem;
+                padding: 0.2rem 0; /* Еще меньше на мобильных */
+                line-height: 1.4;
+                margin-left: 2.8rem; /* Используем тот же отступ, что и на десктопе */
+            }
+            
+            .skill-card li::before {
+                top: 0.6rem;
+                left: -1.8rem; /* Сохраняем смещение для мобильных */
             }
             
             /* Достижения */
@@ -892,9 +1085,13 @@
                 font-size: 1.15rem;
                 margin-bottom: 0.2rem; /* Уменьшили отступ для мобильных */
             }
-            .case-toggle {
-                font-size: 1.5rem;
-                min-width: 20px;
+            .case-toggle-wrapper {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+                gap: 0.4rem;
+            }
+            .case-toggle-arrow {
+                font-size: 0.8rem;
             }
             .case-content {
                 padding: 0 1.2rem;
@@ -929,6 +1126,16 @@
                 width: 6px;
                 height: 6px;
                 top: 0.9rem;
+            }
+            
+            /* Адаптация эффектов наведения для мобильных */
+            .case-item:hover {
+                transform: translateY(-4px); /* Меньше поднятие на мобильных */
+                box-shadow: 0 8px 20px rgba(198, 167, 105, 0.12);
+            }
+            
+            .case-item::before {
+                display: none; /* На мобильных скрываем линию слева для экономии места */
             }
             
             /* Образование */
@@ -1016,11 +1223,7 @@
                 height: 45px;
                 bottom: 2rem; /* Отодвинули от футера */
                 left: 1.5rem;
-            }
-            
-            .scroll-to-top svg {
-                width: 20px;
-                height: 20px;
+                font-size: 24px;
             }
             
             .scroll-to-top:hover::after {
@@ -1052,9 +1255,6 @@
             .case-header h3 {
                 font-size: 1.05rem;
             }
-            .case-toggle {
-                font-size: 1.3rem;
-            }
             .case-section h4 {
                 font-size: 1rem;
                 gap: 0.6rem;
@@ -1079,6 +1279,19 @@
             .salary {
                 font-size: 1rem;
             }
+            /* На очень маленьких экранах можно скрыть текст, оставить только стрелку */
+            .toggle-text {
+                display: none;
+            }
+            
+            .case-toggle-wrapper {
+                padding: 0.4rem;
+                border-radius: 50%;
+                width: 32px;
+                height: 32px;
+                justify-content: center;
+            }
+            
             /* Адаптация цифр зарплаты на очень маленьких экранах */
             .salary-number {
                 display: inline-block;
@@ -1088,6 +1301,27 @@
             }
             .language-card .education-year {
                 font-size: 0.9rem;
+            }
+            
+            /* Компетенции на очень маленьких экранах */
+            .skill-card {
+                padding: 1.2rem;
+            }
+            .skill-card h3 {
+                font-size: 1.2rem;
+                padding-left: 2.5rem;
+            }
+            .skill-card h3::before {
+                width: 1.6rem;
+                height: 1.6rem;
+            }
+            
+            .skill-card li {
+                margin-left: 2.5rem; /* Чуть меньше отступ на очень маленьких экранах */
+            }
+            
+            .skill-card li::before {
+                left: -1.5rem; /* Корректируем смещение */
             }
             
             /* Футер */
@@ -1111,11 +1345,7 @@
                 height: 40px;
                 bottom: 1.5rem;
                 left: 1rem;
-            }
-            
-            .scroll-to-top svg {
-                width: 18px;
-                height: 18px;
+                font-size: 22px;
             }
             
             .scroll-to-top:hover::after {
@@ -1143,9 +1373,6 @@
             .case-header h3 {
                 font-size: 0.95rem;
             }
-            .case-toggle {
-                font-size: 1.2rem;
-            }
             .case-section.task li,
             .case-section.result li {
                 padding-left: 1.2rem;
@@ -1164,6 +1391,26 @@
             .condition-icon {
                 width: 24px;
                 height: 24px;
+            }
+            /* Компетенции на очень маленьких экранах */
+            .skill-card {
+                padding: 1rem;
+            }
+            .skill-card h3 {
+                font-size: 1.1rem;
+                padding-left: 2.2rem;
+            }
+            .skill-card h3::before {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+            
+            .skill-card li {
+                margin-left: 2.2rem; /* Еще меньше отступ */
+            }
+            
+            .skill-card li::before {
+                left: -1.2rem; /* Корректируем смещение */
             }
         }
     </style>
@@ -1185,25 +1432,55 @@
         <div class="hero-content">
             <h1 class="hero-name"><span>Ольга</span> <span>Якобчук</span></h1>
             <div class="hero-description">
-                <p>13+ лет в финансах с опытом в ключевых отраслях: EdTech, производство, строительство, услуги, торговля, страхование.</p>
+                <p>13+ лет в финансах с опытом в ключевых отраслях: строительство, производство, EdTech/IT, услуги, торговля, страхование.</p>
                 <p>Специализируюсь на финансовом анализе, построении отчётности и автоматизации процессов.</p>
                 <p>Ценю задачи, где нужно разобрать сложные данные, найти причину и предложить рабочее решение.</p>
-                <p>Ищу позицию в технологической или динамичной компании, где смогу применять навыки для принятия стратегических решений - от Unit-экономики до оптимизации операционных процессов.</p>
                 <p>Моя цель - приносить пользу бизнесу и давать рекомендации, которые будут влиять на результат.</p>
+                <p>Ищу позицию в технологической или динамичной компании, где смогу применять навыки для принятия стратегических решений - от Unit-экономики до оптимизации операционных процессов.</p>
             </div>
         </div>
     </section>
 
-    <!-- Компетенции -->
+    <!-- КОМПЕТЕНЦИИ - ОБНОВЛЕНО: 4 КАРТОЧКИ 2x2 С ИКОНКАМИ -->
     <section id="skills" class="skills">
         <h2 class="section-title">Компетенции</h2>
         <div class="skills-grid">
-            <div class="skill-card"><h3>Управленческий учёт</h3><ul><li>P&L, Cash Flow</li><li>План-факт-прогноз</li><li>Консолидация</li></ul></div>
-            <div class="skill-card"><h3>Бюджетирование и моделирование</h3><ul><li>Финансовые модели</li><li>Сценарные модели</li><li>Unit-экономика</li></ul></div>
-            <div class="skill-card"><h3>Оптимизация расходов</h3><ul><li>Системы лимитирования</li><li>Внедрение KPI</li><li>Анализ CAC/LTV</li></ul></div>
-            <div class="skill-card"><h3>Финансовый контроль</h3><ul><li>Контроль ДЗ/КЗ</li><li>Аудит процессов</li><li>Выявление убытков</li></ul></div>
-            <div class="skill-card"><h3>Автоматизация</h3><ul><li>Excel (Power Query)</li><li>1C, CRM</li><li>Сервисы «План-Факт», «Финтабло», «Финансист»</li></ul></div>
-            <div class="skill-card"><h3>Взаимодействие</h3><ul><li>Работа с отделами</li><li>Банки, регуляторы</li><li>Постановка процессов</li></ul></div>
+            <div class="skill-card">
+                <h3>Управленческий учёт</h3>
+                <ul>
+                    <li>Подготовка P&L, Cash Flow</li>
+                    <li>Консолидация данных</li>
+                    <li>План-факт-анализ и регулярный прогноз (Forecast)</li>
+                    <li>Подготовка и презентация данных для топ-менеджмента</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Финансовое моделирование</h3>
+                <ul>
+                    <li>Внедрение и поддержка бюджетирования</li>
+                    <li>Построение финансовых моделей</li>
+                    <li>Сценарный анализ</li>
+                    <li>Unit-экономика и анализ рентабельности</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Операционный контроль</h3>
+                <ul>
+                    <li>Мониторинг и оптимизация расходов</li>
+                    <li>Контроль дебиторской и кредиторской задолженности</li>
+                    <li>Выявление убытков и «точек утечки» денег</li>
+                    <li>Расчёт и мониторинг KPI</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Автоматизация и взаимодействие</h3>
+                <ul>
+                    <li>Excel (Power Query, сложные формулы, сводные таблицы)</li>
+                    <li>Различные 1C, CRM</li>
+                    <li>Сервисы План-Факт, Финтабло, Финансист</li>
+                    <li>Работа с банками, регуляторами и отделами компании</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -1214,7 +1491,8 @@
             <div class="achievement-card"><div class="number"><span class="num" data-target="-25">0</span><span class="symbol">%</span></div><div class="achievement-title">Снижение маркетинговых расходов</div><div class="achievement-desc">За счёт анализа unit-экономики</div></div>
             <div class="achievement-card"><div class="number"><span class="num" data-target="-15">0</span><span class="symbol">%</span></div><div class="achievement-title">Снижение расходов на ФОТ за 3 месяца</div><div class="achievement-desc">Оптимизация KPI и структуры команды</div></div>
             <div class="achievement-card"><div class="number"><span class="num" data-target="90">0</span><span class="symbol">%</span></div><div class="achievement-title">Ошибок в платежах устранено</div><div class="achievement-desc">Через стандартизацию процессов</div></div>
-            <div class="achievement-card"><div class="number"><span class="num" data-target="300">0</span><span class="symbol"> тыс. ₽</span></div><div class="achievement-title">Возвращено в оборот</div><div class="achievement-desc">Через аудит платежных операций</div></div>
+           <div class="achievement-card"><div class="number"><span class="num" data-target="40">0</span><span class="symbol">%</span></div><div class="achievement-title">Сокращение времени согласования платежей</div><div class="achievement-desc">За счёт внедрения системы лимитов по отделам</div></div>
+           <div class="achievement-card"><div class="number"><span class="num" data-target="300">0</span><span class="symbol"> тыс.₽</span></div><div class="achievement-title">Возвращено в оборот</div><div class="achievement-desc">Через аудит платежных операций</div></div>
             <div class="achievement-card"><div class="number"><span class="num" data-target="15">0</span><span class="symbol"> ч/мес</span></div><div class="achievement-title">Высвобождено для анализа</div><div class="achievement-desc">За счёт автоматизации отчётности</div></div>
         </div>
     </section>
@@ -1229,7 +1507,10 @@
                         <h3>ООО «Хекслет Рус», EdTech</h3>
                         <div class="case-period">06.2023 – 12.2024</div>
                     </div>
-                    <div class="case-toggle">▸</div>
+                    <div class="case-toggle-wrapper">
+                        <span class="toggle-text">Подробнее</span>
+                        <div class="case-toggle-arrow">▸</div>
+                    </div>
                 </div>
                 <div class="case-content">
                     <div class="case-section task">
@@ -1241,10 +1522,11 @@
                     <div class="case-section result">
                         <h4>Результат</h4>
                         <ul>
-                            <li>Внедрила с нуля управленческий учёт (P&L/CF) в сервисе «План-Факт», что дало собственнику инструмент для контроля рентабельности в реальном времени.</li>
-                            <li>Запустила процесс бюджетирования и план-фактного анализа, обеспечив основу для ежемесячных корректировок.</li>
-                            <li>Провела анализ unit-экономики продуктов, что позволило перераспределить маркетинговый бюджет и скорректировать цены, снизив ежемесячные расходы на маркетинг на 25%.</li>
-                            <li>Выявила дебиторскую задолженность в сумме более 340 тыс. руб. благодаря аудиту эквайринговых операций и сторонних сервисов.</li>
+                            <li>Внедрение управленческого учёта в «План-Факт» - собственник получил P&L и Cash Flow в реальном времени.</li>
+                            <li>Запуск процесса бюджетирования - появился инструмент для контроля рентабельности и план-фактного анализа.</li>
+                            <li>Оптимизация структуры команды и системы KPI — расходы на ФОТ снижены на 15% за квартал.</li>
+                            <li>Анализ unit-экономики - маркетинговые расходы снижены на 25%, цены скорректированы.</li>
+                            <li>Аудит дебиторской задолженности - возвращено 340 тыс. руб. на счёт компании.</li>
                         </ul>
                     </div>
                 </div>
@@ -1255,21 +1537,24 @@
                         <h3>Международный аэропорт «Краснодар»</h3>
                         <div class="case-period">10.2022 – 06.2023</div>
                     </div>
-                    <div class="case-toggle">▸</div>
+                    <div class="case-toggle-wrapper">
+                        <span class="toggle-text">Подробнее</span>
+                        <div class="case-toggle-arrow">▸</div>
+                    </div>
                 </div>
                 <div class="case-content">
                     <div class="case-section task">
                         <h4>Задача</h4>
                         <ul>
-                            <li>Обеспечить обоснование расходов для тарифного регулирования и оптимизировать взаимодействие с госорганом.</li>
+                            <li>Обосновать расходы для тарифного регулирования и оптимизировать отчётность.</li>
                         </ul>
                     </div>
                     <div class="case-section result">
                         <h4>Результат</h4>
                         <ul>
-                            <li>В ходе формирования тарифного дела выявила и документально обосновала неучтённые фактические расходы, что повлияло на итоговый утверждённый размер тарифа.</li>
-                            <li>Полностью автоматизировала формирование ежемесячной отчётности для Департамента гос. регулирования цен, сократив время подготовки с 6 до 1 часа.</li>
-                            <li>Создала пакет внутренних инструкций, стандартизировавший процесс подготовки данных.</li>
+                            <li>Работа с тарифным делом - выявление неучтённых расходов повлияло на итоговый размер тарифа.</li>
+                            <li>Автоматизация отчётности для регулятора - время подготовки сокращено с 6 до 1 часа в месяц.</li>
+                            <li>Разработка внутренних инструкций - стандартизирован процесс подготовки данных.</li>
                         </ul>
                     </div>
                 </div>
@@ -1280,21 +1565,24 @@
                         <h3>ООО «МонтажТехСтрой», промышленное строительство</h3>
                         <div class="case-period">05.2018 – 05.2020</div>
                     </div>
-                    <div class="case-toggle">▸</div>
+                    <div class="case-toggle-wrapper">
+                        <span class="toggle-text">Подробнее</span>
+                        <div class="case-toggle-arrow">▸</div>
+                    </div>
                 </div>
                 <div class="case-content">
                     <div class="case-section task">
                         <h4>Задача</h4>
                         <ul>
-                            <li>Внедрить финансовую дисциплину и систему управления денежными потоками в условиях хаотичных платежей.</li>
+                            <li>Внедрить финансовую дисциплину и исключить кассовые разрывы в условиях хаотичных платежей.</li>
                         </ul>
                     </div>
                     <div class="case-section result">
                         <h4>Результат</h4>
                         <ul>
-                            <li>Ввела систему лимитов расходов по отделам и оперативный бюджет, что сократило время на согласование платежей на 40% и передало финансовую ответственность руководителям.</li>
-                            <li>Создала резервные фонды под налоги и срочные платежи, что системно устранило риски кассовых разрывов и штрафов.</li>
-                            <li>Стандартизировала процесс согласования платежей, минимизировав ошибки в платёжных документах на 90%.</li>
+                            <li>Внедрение системы лимитов и оперативного бюджета - время согласования платежей сокращено на 40%, ответственность делегирована отделам.</li>
+                            <li>Создание резервных фондов - устранены риски кассовых разрывов и штрафов по налогам.</li>
+                            <li>Стандартизация процесса платежей - ошибки в документах снижены на 90%.</li>
                         </ul>
                     </div>
                 </div>
@@ -1309,7 +1597,7 @@
             <div class="education-column"><h3>Основное</h3><div class="education-content"><div class="education-item"><span class="education-year">2008</span><div class="education-degree">Экономика и управление предприятием, бакалавр</div><div class="education-institution">Современная гуманитарная академия</div></div></div></div>
             <div class="education-column"><h3>Повышение квалификации</h3><div class="education-content"><div class="education-item"><span class="education-year">2020</span><div class="education-degree">Управленческий учёт и бюджетирование</div><div class="education-institution">ЧУ ДПО «ЭмМенеджмент»</div></div><div class="education-item"><span class="education-year">2022</span><div class="education-degree">Корпоративные финансы</div><div class="education-institution">РАНХиГС</div></div><div class="education-item"><span class="education-year">2024</span><div class="education-degree">Финансовый директор: базовый уровень</div><div class="education-institution">ИП Бурцева Софья Дмитриевна</div></div></div></div>
         </div>
-        <div class="language-card"><span class="education-year">Английский язык</span><div class="education-degree">Уровень, достаточный для работы с отчётностью и интерфейсами ПО.</div><div class="education-institution">Готова углублять знания.</div></div>
+        <div class="language-card"><span class="education-year">Английский язык</span><div class="education-degree">Уровень, достаточный для работы с отчётностью и интерфейсами ПО.</div><div class="education-institution">Готова углублять и развивать знания.</div></div>
     </section>
 
     <!-- Контакты -->
@@ -1331,7 +1619,7 @@
                 <div class="condition-card">
                     <!-- ИКОНКА ЧАСОВ -->
                     <div class="condition-icon" style="background-image: url('assets/icons/clock.svg')"></div>
-                    <p>MSK (Московское)</p>
+                    <p>MSK (Московское время)</p>
                 </div>
                 <div class="condition-card">
                     <!-- ИКОНКА ЛОКАЦИИ -->
@@ -1374,11 +1662,7 @@
     </footer>
 
     <!-- Кнопка для возврата в начало -->
-    <div class="scroll-to-top" id="scrollToTop">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 15l-6-6-6 6"/>
-        </svg>
-    </div>
+    <div class="scroll-to-top" id="scrollToTop">↑</div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1455,38 +1739,46 @@
                 achievementsObserver.observe(card);
             });
 
-            // ==================== 3. АККОРДЕОН ДЛЯ КЕЙСОВ - ОБНОВЛЕННЫЙ ====================
+            // ==================== 3. АККОРДЕОН ДЛЯ КЕЙСОВ - НЕЗАВИСИМЫЕ КАРТОЧКИ ====================
             const caseItems = document.querySelectorAll('.case-item');
             caseItems.forEach(item => {
                 const header = item.querySelector('.case-header');
                 const content = item.querySelector('.case-content');
-                const toggle = item.querySelector('.case-toggle');
+                const toggleWrapper = item.querySelector('.case-toggle-wrapper');
                 
-                // Клик по всему кейсу (любому месту)
-                item.addEventListener('click', (e) => {
+                // Клик по заголовку или кнопке "Подробнее"
+                header.addEventListener('click', (e) => {
+                    // Предотвращаем срабатывание, если клик по самой кнопке "Подробнее"
+                    // (но в этом случае всё равно сработает, так как кнопка внутри заголовка)
+                    const isClickOnButton = toggleWrapper.contains(e.target);
+                    
+                    // Переключаем состояние текущей карточки
                     const isOpen = content.classList.contains('open');
-                    
-                    // Закрываем все остальные кейсы
-                    caseItems.forEach(otherItem => {
-                        if (otherItem !== item) {
-                            otherItem.querySelector('.case-content').classList.remove('open');
-                            otherItem.querySelector('.case-toggle').textContent = '▸';
-                        }
-                    });
-                    
-                    // Переключаем текущий кейс
                     content.classList.toggle('open');
-                    toggle.textContent = content.classList.contains('open') ? '▾' : '▸';
                     
-                    // Если закрываем кейс — плавно скроллим к его заголовку
-                    if (isOpen) {
-                        setTimeout(() => {
-                            header.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'nearest'
-                            });
-                        }, 50);
+                    // Анимируем стрелку
+                    const arrow = item.querySelector('.case-toggle-arrow');
+                    if (content.classList.contains('open')) {
+                        arrow.textContent = '▾';
+                    } else {
+                        arrow.textContent = '▸';
                     }
+                });
+                
+                // Клик внутри открытого контента (любое место) закрывает карточку
+                content.addEventListener('click', (e) => {
+                    if (content.classList.contains('open')) {
+                        content.classList.remove('open');
+                        const arrow = item.querySelector('.case-toggle-arrow');
+                        arrow.textContent = '▸';
+                    }
+                });
+            });
+
+            // Предотвращаем закрытие при клике на ссылки или другие интерактивные элементы внутри контента
+            document.querySelectorAll('.case-content a, .case-content button').forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Останавливаем всплытие, чтобы не сработало закрытие
                 });
             });
 
